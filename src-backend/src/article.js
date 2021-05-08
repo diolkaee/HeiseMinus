@@ -8,12 +8,6 @@ const sequelize = new Sequelize('sqlite::memory:');
  * Sequelize adds id, createdAt and updatedAt fields automatically.
  */
 const Article = sequelize.define('article', {
-    author: {
-        type: DataTypes.STRING(128),
-        validate: {
-            notEmpty: true
-        }
-    },
     title: {
         type: DataTypes.STRING(128),
         validate: {
@@ -26,6 +20,10 @@ const Article = sequelize.define('article', {
             notEmpty: true
         }
     }
+},
+{
+    //This defaults to true
+    updatedAt: false
 });
 
 //Synchronize the database to create the table
