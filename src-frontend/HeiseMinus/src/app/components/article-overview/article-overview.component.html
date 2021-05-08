@@ -1,0 +1,15 @@
+<div class="article-overview">
+    <div class="article-list-entry" *ngFor="let article of articles">
+        <span class="article-list-entry__title">{{ article.title }}</span>
+        <span class="article-list-entry__created-at-date">{{ article.createdAtDate}}</span>
+        <span class="article-list-entry__created-at-time">{{ article.createdAtTime}}</span>
+        <span class="article-list-entry__buttons">
+            <button mat-icon-button class="editButton">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button class="deleteButton" (click)="removeArticle(article)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </span>
+    </div>
+</div> 
