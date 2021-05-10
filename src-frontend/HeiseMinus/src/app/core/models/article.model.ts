@@ -2,6 +2,7 @@ export class Article {
     id: Number;
     title: string;
     content: string;
+    createdAt: Date;
     //These are seperated so we don't have to call Date functions to retrieve the time and date seperately on every render
     createdAtTime: string;
     createdAtDate: string;
