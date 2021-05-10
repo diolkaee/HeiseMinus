@@ -14,7 +14,7 @@ export class ArticleService {
     }
 
     get(id: Number): Observable<Article> {
-        return this.http.get(`${environment.articlesEndpoint}/${id}}`) as Observable<Article>;
+        return this.http.get(`${environment.articlesEndpoint}/${id}`) as Observable<Article>;
     }
 
     save(article): Observable<Article> {
