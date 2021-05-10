@@ -23,9 +23,9 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
   imports: [
     BrowserModule,
     CoreModule,
-    HttpClientModule,
     AppRoutingModule,
     NoopAnimationsModule,
+    HttpClientModule,
     MatButtonModule,
     MatIconModule
   ],
