@@ -1,8 +1,15 @@
-<h1>{{ article.title }}</h1>
-<span>
-    <em>{{ article.createdAtTime }}</em>
-    <b>{{ article.createdAtDate }}</b>
-</span>
-<div>
-    <p>{{ article.content }}</p>
+<div *ngIf="article">
+    <h1 class="article-header">{{ article.title }}</h1>
+    <div class="article-meta">
+        <time class="article-meta__time" [dateTime]="article.createdAt">
+            <span class>{{ article.createdAt }}</span>
+            <span class>Uhr</span>
+        </time>
+        <time class="article-meta__date" [dateTime]="article.createdAt">
+            <span class>{{ article.createdAt }}</span>
+        </time>
+    </div>
+    <div class = "article-content">
+        <p>{{ article.content }}</p>
+    </div>
 </div>

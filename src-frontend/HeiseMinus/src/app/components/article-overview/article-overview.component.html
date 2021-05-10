@@ -4,9 +4,9 @@
         <span class="article-list-entry__created-at-date">{{ article.createdAtDate}}</span>
         <span class="article-list-entry__created-at-time">{{ article.createdAtTime}}</span>
         <span class="article-list-entry__buttons">
-            <button mat-icon-button class="editButton">
+            <a mat-icon-button class="editButton" routerLink="/article-detail/{{ article.id }}" routerLinkActive="true">
                 <mat-icon>edit</mat-icon>
-            </button>
+            </a>
             <button mat-icon-button class="deleteButton" (click)="removeArticle(article)">
                 <mat-icon>delete</mat-icon>
             </button>

@@ -42,7 +42,6 @@ export class ArticleOverviewComponent implements OnInit {
       );
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
