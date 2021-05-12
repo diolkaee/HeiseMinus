@@ -1,3 +1,10 @@
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.article-list-entry .mat-list-item-content {
+    justify-content: space-between;
+  }
+
+.mat-dialog-content .mat-form-field {
+    width: 100%;
+}

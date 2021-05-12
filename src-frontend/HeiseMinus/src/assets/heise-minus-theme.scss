@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$heise-app-primary: mat-palette($mat-light-blue, 900);
+$heise-app-accent:  mat-palette($mat-amber, 700);
+
+// The warn palette is optional (defaults to red).
+$heise-app-warn:    mat-palette($mat-red);
+
+$heise-app-theme: mat-light-theme((
+  color: (
+    primary: $heise-app-primary,
+    accent: $heise-app-accent,
+    warn: $heise-app-warn,  
+  )
+));
+
+@include angular-material-theme($heise-app-theme);
+
+:root {
+    --color-primary: #{mat-color($heise-app-primary)};
+    --color-accent: #{mat-color($heise-app-accent)};
+}

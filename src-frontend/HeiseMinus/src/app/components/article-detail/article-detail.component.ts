@@ -8,21 +8,21 @@ import { Article, ArticleService } from '../../core';
   styleUrls: ['./article-detail.component.css']
 })
 export class ArticleDetailComponent implements OnInit {
-  article: Article
+  article: Article;
 
   constructor(private articleService: ArticleService, private route: ActivatedRoute, private router: Router) {}
 
+  //Capture articleID from URL and request matching article
   ngOnInit(): void {
-    //Capture article ID from URL and request matching Article from ArticleService 
     const articleId = this.route.snapshot.paramMap.get('id');
-      
-    //If the URL contains no ID param, navigate back to the overview (TODO: or an error page?)
-    if(articleId == null)
-      this.router.navigate(['/article-overview']);
-
+    
     this.articleService.get(Number(articleId))
-      .subscribe(article => {
-        this.article = article;
-      });
+      .subscribe( rawArticle => {
+          this.article = new Article(rawArticle);
+        }, err => {
+          //On error: Navigate back to the overview
+          this.router.navigate(['/article-overview']);
+        }
+      );
   }
 }

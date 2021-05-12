@@ -1,15 +1,29 @@
 <div class="article-overview">
-    <div class="article-list-entry" *ngFor="let article of articles">
-        <span class="article-list-entry__title">{{ article.title }}</span>
-        <span class="article-list-entry__created-at-date">{{ article.createdAtDate}}</span>
-        <span class="article-list-entry__created-at-time">{{ article.createdAtTime}}</span>
-        <span class="article-list-entry__buttons">
-            <a mat-icon-button class="editButton" routerLink="/article-detail/{{ article.id }}" routerLinkActive="true">
-                <mat-icon>edit</mat-icon>
-            </a>
-            <button mat-icon-button class="deleteButton" (click)="removeArticle(article)">
-                <mat-icon>delete</mat-icon>
-            </button>
-        </span>
-    </div>
-</div> 
+    <button class="article-overview__create-button" mat-fab (click)="onCreate()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <button *ngIf="articles.length" class="article-overview__nuke-button" color="warn" mat-fab (click)="onNuke()">
+        <mat-icon>delete</mat-icon>
+    </button>
+    <mat-nav-list>
+        <mat-list-item class="article-list-entry" *ngFor="let article of articles">
+            <a matLine class="article-list-entry__title" routerLink="/article-detail/{{ article.id }}">{{ article.title }}</a>
+            <span class="article-list-entry__meta-controls">
+                <span>{{ article.createdAtDate}}</span>
+                <span class="meta-controls__created-at-time">{{ article.createdAtTime}}</span>
+                <span class="meta-controls__buttons">
+                    <a mat-icon-button (click)="onEdit(article)">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <button mat-icon-button (click)="onDelete(article)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </span>
+            </span>
+        </mat-list-item>
+    </mat-nav-list>
+</div>
+<div class="default-message" *ngIf="!articles?.length">
+    <h2>Welcome to HeiseMinus, a tiny news CMS</h2>
+    <p>There are no articles yet. Create one by pressing the FAB!</p>
+</div>

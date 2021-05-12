@@ -1,3 +1,5 @@
+import { DatePipe } from '@angular/common';
+
 export class Article {
     id: Number;
     title: string;
@@ -9,12 +11,16 @@ export class Article {
 
     constructor(rawArticle) {
         let rawDate = new Date(rawArticle.createdAt);
+        let datePipe = new DatePipe("de_DE");
+        let transformedTime = datePipe.transform(rawDate, 'HH:mm');
+        let transformedDate = datePipe.transform(rawDate, 'dd.MM.YYYY');
         return {
             id: rawArticle.id,
             title: rawArticle.title,
             content: rawArticle.content,
-            createdAtTime: `${rawDate.getHours()}:${rawDate.getMinutes()}`,
-            createdAtDate: `${rawDate.getDate()}.${rawDate.getMonth() + 1}.${rawDate.getFullYear()}`
+            createdAt: rawDate,
+            createdAtTime: transformedTime,
+            createdAtDate: transformedDate
         } as Article
     }
 }

@@ -1,15 +1,14 @@
-<div *ngIf="article">
-    <h1 class="article-header">{{ article.title }}</h1>
-    <div class="article-meta">
-        <time class="article-meta__time" [dateTime]="article.createdAt">
-            <span class>{{ article.createdAt }}</span>
-            <span class>Uhr</span>
-        </time>
-        <time class="article-meta__date" [dateTime]="article.createdAt">
-            <span class>{{ article.createdAt }}</span>
-        </time>
-    </div>
-    <div class = "article-content">
+<a mat-icon-button class="back-button" routerLink="/article-overview">
+    <mat-icon color="accent">arrow_back_ios_new</mat-icon>
+</a>
+<div class="article-detail" *ngIf="article">
+    <h1 class="article-detail__title">{{ article.title }}</h1>
+    <time class="article-detail__meta" [dateTime]="article.createdAt">
+        <span class="meta__date">{{ article.createdAtDate }}</span>
+        <span class="meta__time">{{ article.createdAtTime }} </span>
+        <span>Uhr</span>
+    </time>
+    <div class="article-detail__content">
         <p>{{ article.content }}</p>
     </div>
 </div>

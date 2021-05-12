@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ApiService, ArticleService } from './services';
+import { ArticleService } from './services/article.service';
 
 @NgModule({
     providers: [
-        ApiService,
         ArticleService
     ]
 })
