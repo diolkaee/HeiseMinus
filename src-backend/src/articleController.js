@@ -1,16 +1,6 @@
 const Article = require('./article');
 
 /**
- * A simple data class to hold any errors that occured during model validation
- */
-class ValidationError {
-    constructor(path, message) {
-        this.path = path;
-        this.message = message;
-    }
-}
-
-/**
  * Creates an article from JSON.
  * Validation is enabled and the repsonse object contains any validation errors.
  * 
@@ -24,10 +14,8 @@ exports.createArticle = (req, res) => {
         })
         .catch(err => {
             if(err.name === "SequelizeValidationError") {
-                const validationErrors = err.errors.map(validationErr => new ValidationError(validationErr.path, validationErr.message))
                 res.status(400).send({
-                    message: "Failed to save article to database: Validation Error",
-                    errors: validationErrors
+                    message: "Failed to save article to database: Validation Error"
                 });
             } else {
                 res.status(500).send({
@@ -106,10 +94,8 @@ exports.updateArticle = (req, res) => {
         })
         .catch(err => {
             if(err.name === "SequelizeValidationError") {
-                const validationErrors = err.errors.map(validationErr => new ValidationError(validationErr.path, validationErr.message))
                 res.status(400).send({
-                    message: "Failed to save article to database: Validation Error",
-                    errors: validationErrors
+                    message: "Failed to save article to database: Validation Error"
                 });
             } else {
                 res.status(500).send({
@@ -154,7 +140,7 @@ exports.deleteSingleArticle = (req, res) => {
 /**
  * Deletes all article in the database.
  * This is dangerous and should NOT BE DEPLOYED TO PRODUCTION.
- * But please don't deploy this project to production.
+ * But please don't deploy any of this to production.
  * 
  * @param {IncomingMessage} req The request object forwarded by Express.js
  * @param {ServerResponse} res The response object expected by Express.js
