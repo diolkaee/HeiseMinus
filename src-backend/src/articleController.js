@@ -19,7 +19,7 @@ exports.createArticle = (req, res) => {
                 });
             } else {
                 res.status(500).send({
-                    message: "Internal Server Error while creating article"    
+                    message: "Internal Server Error while creating article"
                 });
             }
         });
@@ -87,7 +87,6 @@ exports.updateArticle = (req, res) => {
                 res.status(400).send({
                     message: `Unspecified error while updating article with ID: ${articleId}`
                 });
-
             } else {
                 res.status(200).end();
             }
@@ -124,7 +123,6 @@ exports.deleteSingleArticle = (req, res) => {
                 res.status(404).send({
                     message: `No article with ID: ${articleId} found`
                 });
-
             } else {
                 res.status(200).end();
             }
@@ -134,7 +132,7 @@ exports.deleteSingleArticle = (req, res) => {
                 message: `Internal Server Error while deleting article with ID: ${articleId}`,
                 err: err
             });
-        })
+        });
 }
 
 /**
@@ -149,7 +147,7 @@ exports.deleteAllArticles = (req, res) => {
     Article.destroy({
         where: {},
         //Force sequelize to truncate the table
-        truncate: true 
+        truncate: true
     })
         .then(numberOfDeletions => {
             res.status(200).send({
@@ -161,5 +159,5 @@ exports.deleteAllArticles = (req, res) => {
                 message: "Internal Server Error while deleting articles",
                 err: err
             });
-        })
+        });
 }
