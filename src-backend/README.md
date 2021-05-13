@@ -1,7 +1,8 @@
 # HeiseMinus Server
 
 <p>This is the server for the tiny CMS, HeiseMinus.</p>
-It uses expressJs for routing, Sqlite as in-memory database and Sequelize as ORM.
+
+It uses [Express](https://expressjs.com/) for routing, [Sqlite](https://www.npmjs.com/package/sqlite3) as in-memory database and [Sequelize](https://sequelize.org/) as ORM.
 
 ## Setup
 1. Make sure you have [Node](https://nodejs.org/en/) installed.
